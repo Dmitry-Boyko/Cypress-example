@@ -16,4 +16,16 @@ const clickIfDisplaying = (element: string, timeout?: number) => {
   })
 }
 
-export {waitUntilDisappear, clickIfDisplaying}
+const clickEnabledButton = (btnName: string) => {
+  cy.contains('button', btnName)
+    .invoke('is', ':enabled')
+    .then(enabled => {
+      if (enabled) {
+        cy.contains('button', btnName).click()
+      } else {
+        cy.contains('button', btnName).click()
+      }
+    })
+}
+
+export {waitUntilDisappear, clickIfDisplaying, clickEnabledButton}
